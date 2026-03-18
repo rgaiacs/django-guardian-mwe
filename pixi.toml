@@ -6,6 +6,21 @@ platforms = ["linux-64"]
 version = "0.1.0"
 
 [tasks]
+[tasks.remove-db]
+cmd = "rm mwe/db.sqlite3"
+
+[tasks.run-migration]
+cmd = "cd mwe && python manage.py migrate"
+
+[tasks.flush-db]
+cmd = "cd mwe && python manage.py flush --noinput"
+
+[tasks.test]
+depends-on = [
+  { task = "flush-db", environment = "py311" },
+  { task = "run-migration", environment = "py312" },
+]
+cmd = "cd mwe && python manage.py shell < ../test.py"
 
 [dependencies]
 python = ">=3.14.3,<3.15"
