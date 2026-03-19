@@ -17,8 +17,8 @@ cmd = "cd mwe && python manage.py flush --noinput"
 
 [tasks.test]
 depends-on = [
-  { task = "flush-db", environment = "py311" },
-  { task = "run-migration", environment = "py312" },
+  { task = "flush-db" },
+  { task = "run-migration" },
 ]
 cmd = "cd mwe && python manage.py shell < ../test.py"
 
