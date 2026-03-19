@@ -15,5 +15,5 @@ assign_perm("view_questionwithtext", u, q)
 assign_perm("change_questionwithtext", u, q)
 assign_perm("delete_questionwithtext", u, q)
 
-# This does NOT work.
+# This works after use abstract class.
 assign_perm("answer", u, q)
